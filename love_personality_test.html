@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fff7f2">
+<title>测你的恋爱人格｜一场关于心动的自我探索</title>
+<style>
+:root{--ink:#493b3b;--muted:#927f7b;--pink:#e9a9ad;--rose:#c97983;--gold:#c49b58;--cream:#fffaf5;--paper:#fffdfb;--line:#f0e4df;--shadow:0 22px 65px rgba(132,83,78,.12)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;color:var(--ink);font-family:ui-rounded,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background:radial-gradient(circle at 8% 8%,#fce8e5 0,transparent 28%),radial-gradient(circle at 92% 88%,#f8edda 0,transparent 27%),linear-gradient(135deg,#fff8f4,#fffaf5 55%,#fff5f0);overflow-x:hidden}
+button{font:inherit}.shell{width:min(900px,calc(100% - 32px));margin:0 auto;padding:28px 0 54px}.topline{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;color:#a88b84;font-size:12px;letter-spacing:.16em;text-transform:uppercase}.brand{display:flex;align-items:center;gap:9px;font-weight:700;letter-spacing:.08em}.brand-mark{width:28px;height:28px;border:1px solid #e7c4b7;border-radius:50%;display:grid;place-items:center;color:var(--rose);font-size:15px}.tiny-note{letter-spacing:.04em}
+.panel{position:relative;background:rgba(255,253,251,.88);border:1px solid rgba(235,213,204,.85);border-radius:28px;box-shadow:var(--shadow);overflow:hidden}.hero{padding:clamp(32px,7vw,70px);text-align:center;min-height:580px;display:flex;flex-direction:column;align-items:center;justify-content:center}.eyebrow{font-size:11px;letter-spacing:.28em;color:var(--gold);font-weight:700;margin-bottom:18px}.hero h1{font-family:"Songti SC","Noto Serif SC",serif;font-size:clamp(38px,7vw,66px);font-weight:500;line-height:1.2;letter-spacing:.04em;margin:0;color:#574242}.hero h1 span{color:var(--rose)}.subtitle{max-width:490px;line-height:1.9;color:var(--muted);font-size:15px;margin:22px auto 30px}.ornament{font-size:29px;color:#dca8a3;letter-spacing:13px;margin:0 0 22px 13px}.meta{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:30px}.pill{padding:8px 14px;border:1px solid #f0dfd8;border-radius:99px;color:#967c75;background:#fff9f5;font-size:12px}.primary{border:0;border-radius:999px;padding:15px 34px;background:linear-gradient(110deg,#d98e98,#c77b83);color:white;font-weight:700;letter-spacing:.08em;box-shadow:0 10px 24px #d99ba044;cursor:pointer;transition:.25s}.primary:hover{transform:translateY(-2px);box-shadow:0 14px 28px #d99ba066}.primary:active{transform:scale(.98)}.footnote{font-size:11px;color:#b19c95;margin-top:20px}
+.quiz{padding:clamp(24px,5vw,48px);min-height:570px}.quiz-head{display:flex;justify-content:space-between;align-items:center;color:#a18a83;font-size:12px;letter-spacing:.08em}.progress-wrap{height:5px;background:#f5eae5;border-radius:10px;margin:17px 0 38px;overflow:hidden}.progress{height:100%;width:0;background:linear-gradient(90deg,#e5a6a8,#c69d61);border-radius:10px;transition:width .45s ease}.q-kicker{font-size:11px;color:var(--gold);letter-spacing:.22em;margin-bottom:13px}.question{font-family:"Songti SC","Noto Serif SC",serif;font-size:clamp(23px,4vw,31px);line-height:1.5;font-weight:500;margin:0 0 28px;max-width:680px}.answers{display:grid;grid-template-columns:1fr 1fr;gap:13px}.answer{position:relative;text-align:left;min-height:88px;padding:17px 18px 17px 48px;border:1px solid var(--line);border-radius:16px;background:#fffdfa;color:#685653;cursor:pointer;line-height:1.65;transition:.2s}.answer:before{content:attr(data-letter);position:absolute;left:17px;top:18px;width:21px;height:21px;display:grid;place-items:center;border-radius:50%;font-size:11px;color:#b17d7b;background:#faeeea}.answer:hover{border-color:#e1b2ae;background:#fff7f4;transform:translateY(-2px)}.answer.selected{border-color:#d18e91;background:#fff3f1;box-shadow:0 0 0 2px #f3d9d6 inset}.quiz-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:28px}.ghost{border:0;background:transparent;color:#a68e87;padding:10px 4px;cursor:pointer}.ghost:disabled{opacity:.25;cursor:not-allowed}.hint{font-size:11px;color:#b5a29b}
+.result{padding:clamp(22px,5vw,48px)}.result-top{text-align:center;padding:12px 8px 25px}.result-label{font-size:11px;letter-spacing:.25em;color:var(--gold)}.result h2{font-family:"Songti SC","Noto Serif SC",serif;font-size:clamp(32px,6vw,49px);font-weight:500;margin:14px 0 8px;color:#614748}.result-sub{color:#a18780;font-size:13px}.result-card{position:relative;border:1px solid #eedbd2;border-radius:23px;background:linear-gradient(145deg,#fffaf7,#fff5f1 58%,#fffaf0);padding:clamp(22px,4vw,38px);overflow:hidden}.result-card:after{content:"♡";position:absolute;right:17px;top:-35px;font-family:Georgia;font-size:150px;color:#f6e4df;opacity:.65;pointer-events:none}.type-icon{font-size:42px;margin-bottom:10px}.type-tag{display:inline-block;border-radius:99px;padding:6px 12px;background:#f7e8df;color:#a77865;font-size:11px;letter-spacing:.08em}.type-title{font-family:"Songti SC","Noto Serif SC",serif;font-size:30px;font-weight:500;margin:12px 0;color:#65484a}.motto{font-family:"Songti SC","Noto Serif SC",serif;font-size:18px;color:#b16e76;line-height:1.7;margin:12px 0 22px}.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}.info-box{background:#fffdfa;border:1px solid #f1e6df;border-radius:15px;padding:17px}.info-box h3{font-size:12px;color:#b18472;letter-spacing:.1em;margin:0 0 9px}.info-box p{font-size:13px;line-height:1.85;color:#786763;margin:0}.match{font-size:13px;line-height:1.9;color:#826e68;margin:18px 2px 0}.sparkle{color:#c59b62}.actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:25px 0 10px}.secondary{border:1px solid #e6c9c0;border-radius:99px;padding:13px 24px;background:#fffaf7;color:#a66f72;font-weight:600;cursor:pointer}.disclaimer{text-align:center;color:#b3a09a;font-size:11px;margin-top:18px}.toast{position:fixed;left:50%;bottom:25px;transform:translate(-50%,20px);padding:11px 18px;background:#604d4d;color:#fff;border-radius:99px;font-size:12px;opacity:0;pointer-events:none;transition:.25s;z-index:5}.toast.show{opacity:1;transform:translate(-50%,0)}.fade{animation:fade .38s ease both}@keyframes fade{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}.hidden{display:none!important}
+@media(max-width:620px){.shell{width:min(100% - 20px,560px);padding-top:16px}.topline{margin:0 5px 14px}.tiny-note{display:none}.hero{min-height:calc(100svh - 90px);padding:34px 22px;border-radius:23px}.quiz,.result{padding:23px 18px;border-radius:23px}.answers{grid-template-columns:1fr;gap:10px}.answer{min-height:65px;padding:13px 14px 13px 45px}.answer:before{top:14px;left:14px}.progress-wrap{margin:14px 0 28px}.question{margin-bottom:22px}.result-grid{grid-template-columns:1fr}.quiz-bottom{margin-top:20px}.hint{max-width:150px;text-align:right}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="topline"><div class="brand"><span class="brand-mark">♡</span> HEART / NOTES</div><div class="tiny-note">A LITTLE TEST ABOUT LOVE</div></div>
+  <main id="home" class="panel hero fade">
+    <div class="eyebrow">A JOURNEY TO YOUR HEART</div><div class="ornament">✧ ♡ ✧</div>
+    <h1>测你的<br><span>恋爱人格</span></h1>
+    <p class="subtitle">如果心动有形状，你会是哪一种？<br>从日常小事出发，40 道选择题，发现你在亲密关系里的可爱模样。</p>
+    <div class="meta"><span class="pill">40 道生活化题目</span><span class="pill">约 5–8 分钟</span><span class="pill">8 种恋爱人格</span></div>
+    <button class="primary" id="startBtn">开始探索我的恋爱人格　→</button>
+    <div class="footnote">没有标准答案，选最像此刻自己的那一个就好。</div>
+  </main>
+  <main id="quiz" class="panel quiz hidden">
+    <div class="quiz-head"><span>YOUR HEART, YOUR ANSWER</span><span id="counter">01 / 40</span></div>
+    <div class="progress-wrap"><div class="progress" id="progress"></div></div>
+    <section id="questionArea" class="fade">
+      <div class="q-kicker" id="qKicker">QUESTION 01</div><h2 class="question" id="questionText"></h2>
+      <div class="answers" id="answers"></div>
+    </section>
+    <div class="quiz-bottom"><button class="ghost" id="prevBtn" disabled>← 上一题</button><span class="hint">凭直觉选择，不必想太久</span></div>
+  </main>
+  <main id="result" class="panel result hidden">
+    <div class="result-top fade"><div class="result-label">YOUR LOVE PERSONALITY</div><h2>你的恋爱人格是</h2><div class="result-sub">在关系里，你有自己独特的发光方式</div></div>
+    <section id="resultCard" class="result-card fade">
+      <div class="type-icon" id="typeIcon">🌷</div><span class="type-tag">LOVE PERSONALITY · <span id="typeNo">01</span></span>
+      <h3 class="type-title" id="typeName"></h3><p class="motto" id="typeMotto"></p>
+      <div class="result-grid">
+        <div class="info-box"><h3>✦ 性格特点</h3><p id="traits"></p></div>
+        <div class="info-box"><h3>✦ 隐藏优势</h3><p id="strength"></p></div>
+      </div>
+      <p class="match"><span class="sparkle">✧ 匹配理由：</span><span id="reason"></span></p>
+      <p class="match"><span class="sparkle">✧ 趣味彩蛋：</span><span id="easter"></span></p>
+    </section>
+    <div class="actions"><button class="primary" id="posterBtn">✧ 生成我的专属海报</button><button class="secondary" id="restartBtn">再测一次</button></div>
+    <div class="disclaimer">本测试仅供娱乐与自我观察，不构成专业心理评估。</div>
+  </main>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+"use strict";
+const archetypes = [
+ {id:"guardian",name:"温柔守护型",icon:"🌷",motto:"“我不一定最会说情话，但我会把你的冷暖放在心上。”",traits:"你习惯用行动表达在意，善于察觉对方的小需求。比起轰轰烈烈，你更珍惜稳定、体贴而有回应的陪伴。",strength:"可靠、共情力强，能把平凡日子过出被照顾的温度。你是让人安心的存在。",reason:"你的选择多次指向照顾、倾听与细水长流。你相信爱不只在特别的日子，更藏在每一次认真回应里。",easter:"你的恋爱超能力是记住对方随口提过的小事。对方说过一次喜欢某种甜点，你可能已经默默收藏店铺了。"},
+ {id:"romantic",name:"热烈浪漫型",icon:"🌹",motto:"“喜欢就要让你知道，心动不该总是静音播放。”",traits:"你重视仪式感和情绪浓度，愿意主动制造惊喜，也期待爱意被清楚表达。你相信生活需要一点闪闪发光的瞬间。",strength:"感染力强、表达直接，能为关系注入热情和新鲜感，让平淡日常也值得纪念。",reason:"你偏爱主动表达、分享喜悦和创造回忆。对你而言，爱不是猜谜，而是愿意把心意大方交到对方手里。",easter:"你很可能拥有一个“约会灵感收藏夹”，连普通周二也能被你安排成值得期待的小节日。"},
+ {id:"independent",name:"理性独立型",icon:"🪞",motto:"“我喜欢你，也依然喜欢完整而自由的自己。”",traits:"你有清晰边界和稳定的个人节奏。亲密对你而言不是时时黏在一起，而是彼此信任、互相支持，也保留独处空间。",strength:"情绪相对稳定，擅长沟通实际问题，不容易在关系里失去自我。你能让爱更清醒、更长久。",reason:"你的答案体现出独立思考、尊重空间和理性处理分歧的倾向。你想要的是并肩同行，而不是互相捆绑。",easter:"你的理想约会可能是各自做喜欢的事，偶尔抬头相视一笑——安静，但一点也不无聊。"},
+ {id:"sensitive",name:"细腻敏感型",icon:"🌙",motto:"“我听见了你没说出口的那半句话。”",traits:"你观察细致，对语气、氛围和情绪变化很敏锐。你渴望被理解，也会认真揣摩对方的感受。",strength:"共情细腻、感受力丰富，能发现关系中容易被忽略的情绪细节，让对方感到被看见。",reason:"你的选择常常关注语气、细节和情绪回应。你对关系的投入不仅来自喜欢，也来自想真正理解一个人。",easter:"你可能是聊天记录里的“语气侦探”。一个句号都能让你思考三秒，不过也别忘了给自己一点轻松。"},
+ {id:"free",name:"自由随性型",icon:"🦋",motto:"“一起去看没看过的风景，也允许彼此自由呼吸。”",traits:"你喜欢新鲜体验，不太爱被固定流程束缚。你享受自然发生的默契，希望恋爱是生活的加分项，而不是限制。",strength:"适应力好、心态灵活，擅长把日常变成小冒险，也能给关系带来轻松感。",reason:"你的答案显示出对探索、弹性和个人空间的偏好。你更相信舒服的相处，而不是照着某种标准恋爱模板。",easter:"临时起意的夜宵、说走就走的小旅行，可能比精心排练的惊喜更容易让你心动。"},
+ {id:"devoted",name:"深情专一型",icon:"💌",motto:"“热闹世界很大，而我的认真只想留给你。”",traits:"你看重承诺和长期投入，不轻易开始，却愿意在确定之后持续经营。你喜欢关系里明确、稳定而真诚的选择。",strength:"忠诚、有耐心，遇到困难愿意一起面对。你能把承诺落实在时间与行动里。",reason:"你的倾向体现出重视信任、持续陪伴和长期规划。你不追求很多段故事，更在意一段关系能否走得深。",easter:"你可能会把重要纪念日记得比自己的快递取件码还牢，属于“细水长流但绝不敷衍”的选手。"},
+ {id:"playful",name:"幽默玩伴型",icon:"🍒",motto:"“喜欢你这件事很认真，逗你开心这件事也一样。”",traits:"你擅长用玩笑和轻松气氛拉近距离。你喜欢一起体验生活、分享梗和制造只有两个人懂的小默契。",strength:"乐观、有趣、化解尴尬能力强。你能让关系保有轻盈感，也善于在低落时带来一点光。",reason:"你的答案偏向互动、分享和轻松表达。你希望爱人不只是伴侣，也是能一起笑、一起疯的最佳队友。",easter:"你们的专属暗号可能会越来越多，外人听不懂的冷笑话，反而是你最珍惜的浪漫。"},
+ {id:"steady",name:"成熟稳重型",icon:"☕",motto:"“心动让我们相遇，担当让我们走得更远。”",traits:"你看重责任感、现实协作和长期相处的质量。遇到问题时倾向先厘清状况，再寻找两个人都能接受的办法。",strength:"有担当、善于协调，能在复杂时刻稳住节奏。你擅长把喜欢变成可持续的共同生活。",reason:"你在选择中展现出务实、负责和解决问题的倾向。你既重视感情，也愿意认真面对生活本身。",easter:"朋友可能会找你当“恋爱军师”，因为你不仅会安慰人，还会顺手帮忙列出可执行的下一步。"}
+];
+
+// 每题包含生活场景与四种反应；四个选项分别记入不同人格维度。
+const rawQuestions = [
+["周末终于空下来，你最想怎么安排？",["约喜欢的人吃饭散步，顺便照顾一下对方的心情","安排一场有惊喜感的约会，让这一天特别一点","留些时间给自己，做喜欢的事再自然碰面","看当天心情，来一场没有计划的小冒险"]],
+["朋友临时取消约定，你通常会？",["先问问对方是不是遇到什么事","有点失落，但会直接说自己很期待","理解对方，也重新安排自己的时间","开个玩笑缓和气氛，改天再约"]],
+["收到一条语气有点冷淡的消息，你会？",["留意对方是不是累了，晚点温柔确认","直接表达想念，问问是不是哪里不开心","不急着猜测，等有空时再沟通","先做自己的事，不让一条消息打乱节奏"]],
+["挑选礼物时，你更看重？",["对方用得上，能感受到被照顾","包装和惊喜感，最好有纪念意义","符合对方真实喜好，不追求形式","有趣特别，最好能一起玩起来"]],
+["两个人意见不同时，你倾向？",["先听完对方的想法，再找折中办法","把自己的感受坦白说出来","各自冷静思考，再讨论重点","别把气氛弄僵，换个轻松方式聊"]],
+["旅行时遇到行程变动，你会？",["先确认大家是否舒服、是否需要休息","把意外变成新的浪漫回忆","评估选项，重新规划最合适路线","顺其自然，说不定有新发现"]],
+["你最喜欢怎样的聊天节奏？",["每天有温暖问候，知道彼此安好","想到就分享，热烈地聊个不停","不必时时联系，但每次都真诚","轻松有梗，想到什么就聊什么"]],
+["看到喜欢的餐厅，你会？",["记下来，找机会带对方去尝尝","立刻发给对方，提议安排约会","先看看评价和时间，再决定","收藏一下，哪天突然想去就出发"]],
+["忙碌的一天结束后，你最希望？",["有人问一句辛不辛苦，给个拥抱","收到热情的消息，听见一句想你","拥有安静空间，之后再好好交流","一起吃点东西、讲讲今天的趣事"]],
+["在聚会中，你通常是？",["留意落单的人，主动照顾大家","热情加入话题，让气氛升温","观察熟悉后再加入，保留自己的节奏","负责抛梗，让大家笑起来"]],
+["对方忘了一个小约定，你会？",["先了解原因，不想让对方有压力","坦白说有点失望，希望下次记得","判断事情重要程度，再理性沟通","用轻松方式提醒，别让小事发酵"]],
+["你更喜欢哪种约会？",["一起做饭、散步等温暖日常","烛光晚餐、花束或特别体验","各自做喜欢的事，结束后分享","逛市集、玩游戏或临时探店"]],
+["面对新的兴趣爱好，你通常？",["想和重要的人一起体验","希望马上分享这份兴奋","先自己研究，掌握后再分享","直接试试看，过程比结果重要"]],
+["如果对方心情低落，你会？",["安静陪伴，做些实际的小事","认真表达在乎，给对方拥抱和鼓励","问清楚对方需要建议还是空间","想办法逗笑对方，带他换换心情"]],
+["你怎么看待纪念日？",["记得就好，重要的是平日里的用心","值得认真庆祝，制造专属回忆","不必拘泥日期，双方舒服最重要","可以有趣一点，每年换个新玩法"]],
+["做重要决定时，你更依赖？",["考虑彼此感受和生活需要","跟着内心热情，勇敢做选择","收集信息，分析利弊","先行动体验，再边走边调整"]],
+["对方有自己的朋友圈，你会？",["支持对方，也愿意融入彼此生活","希望被自然地介绍和分享","尊重彼此社交边界","觉得很好，大家都该有自己的乐趣"]],
+["你最受不了相处中的哪件事？",["忽略感受、缺少关心","长期没有表达，让关系变得平淡","过度干涉，没有个人空间","相处太严肃，缺少快乐"]],
+["看到一对情侣在街头拥抱，你的第一反应？",["觉得很温暖，也想给身边人一个拥抱","浪漫！真希望生活多些这样的瞬间","挺好，但亲密表达不一定要公开","有点可爱，忍不住想笑着祝福"]],
+["遇到压力时，你通常怎么做？",["先照顾好身边人的感受，再处理自己","找信任的人倾诉，释放情绪","独自整理思路，分步骤解决","找点喜欢的事转移一下心情"]],
+["你希望伴侣如何表达在乎？",["记得细节，并在需要时出现","直接说爱、主动拥抱和制造惊喜","尊重我的选择，关键时刻可靠","愿意分享日常，一起玩得开心"]],
+["朋友向你倾诉感情烦恼，你会？",["认真听，陪他把情绪安放好","热情站队，给足鼓励和支持","帮他梳理事实与可行方案","先让他笑出来，再慢慢聊"]],
+["你更喜欢怎样的生活节奏？",["规律温暖，有人一起打理日常","充满期待，时不时安排特别体验","有自己的安排，也有相处的余裕","灵活多变，随时保留一点惊喜"]],
+["收到一份意料之外的小惊喜，你会？",["感动于对方记得我的小事","开心得马上表达，想回送更大的惊喜","感谢对方，也会认真回应这份心意","笑着研究惊喜背后的创意"]],
+["两个人一起做家务，你更像？",["默默把对方那份也顺手做好","放音乐，把普通家务变成约会","分工清楚，各自负责擅长的部分","边做边玩，比赛谁先完成"]],
+["你对未来的想象更接近？",["一起拥有温馨、互相照顾的生活","共同创造很多值得回忆的故事","彼此成长，仍保有独立目标","一起探索世界，不被固定路线限制"]],
+["对方需要独处时，你会？",["确认对方状态后，给出温柔空间","表达想念，但尊重对方的需要","自然接受，自己也安排好时间","正好各自充电，之后再分享趣事"]],
+["在陌生环境里，你通常？",["先找到同行的人是否适应","主动认识新朋友，打开话题","观察环境，按自己的节奏行动","四处看看，哪里有趣去哪里"]],
+["如果约会迟到了，你最在意？",["对方有没有安全到达、是否着急","希望对方提前告知，别让期待落空","说明情况、给出准确时间就好","别太紧张，见面开心最重要"]],
+["你会如何保存重要回忆？",["留着对方写的小纸条和生活物件","拍照、做相册，认真记录每个瞬间","记在心里，偶尔翻看就好","收集有趣纪念品，想到就会笑"]],
+["面对关系中的小摩擦，你希望？",["先确认彼此没有受伤，再慢慢说开","当下说清楚，不把喜欢藏起来","冷静沟通，把问题解决掉","别一直僵着，找个台阶和好"]],
+["哪种夸奖最让你开心？",["你总是很替别人着想","和你在一起，每天都很有趣","你有自己的想法，特别有魅力","你让人觉得踏实、值得信任"]],
+["如果一起养一盆植物，你会？",["记得浇水，观察它长得好不好","挑漂亮花盆，记录每次新芽","研究习性，制定照料计划","随性照料，看看它带来什么惊喜"]],
+["你觉得舒服的亲密关系应该？",["彼此体贴，日常里有很多温柔","爱意表达充分，常常感到心动","信任彼此，亲密也不失自我","能玩到一起，也能自在做自己"]],
+["当对方取得好成绩或进步，你会？",["替对方开心，准备一顿庆祝的饭","大声夸奖，安排一个庆祝惊喜","真诚肯定，也聊聊下一步目标","用玩笑和庆祝让快乐加倍"]],
+["你更愿意把钱花在哪种体验上？",["提升生活舒适度，让彼此过得更好","特别的约会、旅行和纪念体验","有价值的长期计划或共同目标","新鲜活动、兴趣体验和小冒险"]],
+["如果发生误会，你通常？",["先表达理解，再耐心解释","尽快说出真实感受，不冷战","把事情经过讲清楚，避免反复猜","用轻松方式破冰，再认真沟通"]],
+["你最想和伴侣培养哪种默契？",["一个眼神就知道对方需要什么","总能给彼此制造惊喜和心动","互相信任，不必事事解释","有共同笑点，日常相处很自在"]],
+["你希望别人怎样形容你们？",["温暖体贴、相互扶持的一对","甜蜜热烈、眼里只有彼此的一对","独立成熟、并肩成长的一对","有趣自在、像最佳玩伴的一对"]],
+["如果给未来的恋爱留一句提醒，你会选？",["别忘了在小事里表达关心","勇敢说爱，也勇敢制造回忆","爱别人时，也要照顾好自己","保持好奇，别让日子失去趣味"]]
+];
+// 8种维度循环均衡分布；选项顺序每题轮换，避免某一人格总在同一位置。
+const questions = rawQuestions.map((q,i)=>{
+ const order = [0,1,2,3].map(n=>(n+i)%4);
+ const typeIds = ["guardian","romantic","independent","playful"];
+ const texts = q[1];
+ return {title:q[0], options:order.map((v)=>({text:texts[v],type:typeIds[v]}))};
+});
+const typeById = Object.fromEntries(archetypes.map(x=>[x.id,x]));
+const extraTypeIds=["sensitive","devoted","free","steady"];
+// 将额外四维度以题号轮换加入，确保8种类型均有充分计分机会。
+questions.forEach((q,i)=>{
+ const primary=["guardian","romantic","independent","playful"];
+ const alternate=["sensitive","devoted","free","steady"];
+ const chosen=(i%2===0)?primary:alternate;
+ q.options=q.options.map((o,j)=>{
+   const originalStyle=(j+i)%4;
+   return {...o,type:chosen[originalStyle]};
+ });
+});
+let current=0, answers=Array(questions.length).fill(null), finalType=null;
+const $=id=>document.getElementById(id);
+function show(view){["home","quiz","result"].forEach(id=>$(id).classList.toggle("hidden",id!==view));window.scrollTo({top:0,behavior:"smooth"});}
+function renderQuestion(){
+ const q=questions[current];$("counter").textContent=String(current+1).padStart(2,"0")+" / 40";$("qKicker").textContent="QUESTION "+String(current+1).padStart(2,"0");$("progress").style.width=((current)/40*100)+"%";$("questionText").textContent=q.title;$("prevBtn").disabled=current===0;
+ const box=$("answers");box.innerHTML="";
+ q.options.forEach((o,i)=>{const b=document.createElement("button");b.className="answer"+(answers[current]===i?" selected":"");b.type="button";b.dataset.letter=["A","B","C","D"][i];b.textContent=o.text;b.addEventListener("click",()=>choose(i));box.appendChild(b);});
+ $("questionArea").classList.remove("fade");void $("questionArea").offsetWidth;$("questionArea").classList.add("fade");
+}
+function choose(index){answers[current]=index;const buttons=[...$("answers").children];buttons.forEach((b,i)=>b.classList.toggle("selected",i===index));setTimeout(()=>{if(current<questions.length-1){current++;renderQuestion();}else{finish();}},180);}
+function score(){const scores=Object.fromEntries(archetypes.map(t=>[t.id,0]));answers.forEach((a,i)=>{if(a!==null)scores[questions[i].options[a].type]++;});return scores;}
+function finish(){
+ const scores=score();const ranked=archetypes.map(t=>({type:t,score:scores[t.id]})).sort((a,b)=>b.score-a.score);
+ // 次高分用于打破并列；同分时采用稳定顺序，保证结果可复现。
+ finalType=ranked[0].type;
+ $("progress").style.width="100%";$("typeIcon").textContent=finalType.icon;$("typeName").textContent=finalType.name;$("typeMotto").textContent=finalType.motto;$("traits").textContent=finalType.traits;$("strength").textContent=finalType.strength;$("reason").textContent=finalType.reason;$("easter").textContent=finalType.easter;$("typeNo").textContent=String(archetypes.indexOf(finalType)+1).padStart(2,"0");
+ show("result");
+}
+function restart(){current=0;answers=Array(40).fill(null);finalType=null;show("home");}
+$("startBtn").addEventListener("click",()=>{current=0;show("quiz");renderQuestion();});
+$("prevBtn").addEventListener("click",()=>{if(current>0){current--;renderQuestion();}});
+$("restartBtn").addEventListener("click",restart);
+function toast(msg){$("toast").textContent=msg;$("toast").classList.add("show");setTimeout(()=>$("toast").classList.remove("show"),2300);}
+function makePoster(){
+ if(!finalType)return;
+ const c=document.createElement("canvas");c.width=1080;c.height=1440;const ctx=c.getContext("2d");
+ const grad=ctx.createLinearGradient(0,0,1080,1440);grad.addColorStop(0,"#fff7f2");grad.addColorStop(.55,"#fffaf5");grad.addColorStop(1,"#f8e9df");ctx.fillStyle=grad;ctx.fillRect(0,0,1080,1440);
+ // 柔和圆形装饰与细线框
+ ctx.fillStyle="rgba(222,164,158,.13)";ctx.beginPath();ctx.arc(1000,110,250,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.arc(70,1330,210,0,Math.PI*2);ctx.fill();
+ ctx.strokeStyle="#e8c9bd";ctx.lineWidth=3;roundRect(ctx,55,55,970,1330,35);ctx.stroke();
+ ctx.textAlign="center";ctx.fillStyle="#b88d62";ctx.font="600 25px sans-serif";ctx.fillText("A LITTLE TEST ABOUT LOVE",540,145);
+ ctx.fillStyle="#c58e8e";ctx.font="52px serif";ctx.fillText("✧     ♡     ✧",540,235);
+ ctx.fillStyle="#6a5050";ctx.font="42px sans-serif";ctx.fillText("我的恋爱人格",540,340);
+ ctx.fillStyle="#c77d84";ctx.font="100px serif";ctx.fillText(finalType.icon,540,485);
+ ctx.fillStyle="#604849";ctx.font="bold 66px sans-serif";ctx.fillText(finalType.name,540,595);
+ ctx.fillStyle="#b17478";ctx.font="italic 34px serif";wrapText(ctx,finalType.motto,540,680,820,58,2);
+ ctx.strokeStyle="#e8d5ca";ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(170,825);ctx.lineTo(910,825);ctx.stroke();
+ ctx.textAlign="left";ctx.fillStyle="#b18472";ctx.font="bold 27px sans-serif";ctx.fillText("性格特点",145,895);
+ ctx.fillStyle="#725e59";ctx.font="28px sans-serif";wrapText(ctx,finalType.traits,145,945,790,46,3);
+ ctx.fillStyle="#b18472";ctx.font="bold 27px sans-serif";ctx.fillText("隐藏优势",145,1115);
+ ctx.fillStyle="#725e59";ctx.font="28px sans-serif";wrapText(ctx,finalType.strength,145,1165,790,46,3);
+ ctx.textAlign="center";ctx.fillStyle="#c59b62";ctx.font="25px sans-serif";ctx.fillText("♡  愿你自在去爱，也被认真珍惜  ♡",540,1325);
+ ctx.fillStyle="#b9a39a";ctx.font="18px sans-serif";ctx.fillText("趣味人格测试 · 仅供娱乐与自我观察",540,1370);
+ const a=document.createElement("a");a.download="我的恋爱人格-"+finalType.name+".png";a.href=c.toDataURL("image/png");a.click();toast("海报已生成，图片已开始下载！");
+}
+function roundRect(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
+function wrapText(ctx,text,x,y,maxWidth,lineHeight,maxLines){let line="",lines=[];for(const ch of text){const test=line+ch;if(ctx.measureText(test).width>maxWidth&&line){lines.push(line);line=ch;}else line=test;}if(line)lines.push(line);lines=lines.slice(0,maxLines);lines.forEach((l,i)=>ctx.fillText(l,x,y+i*lineHeight));}
+$("posterBtn").addEventListener("click",makePoster);
+</script>
+</body>
+</html>

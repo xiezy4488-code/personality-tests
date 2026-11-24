@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#17251f">
+<title>测测你的灵魂对应哪位中国历史人物</title>
+<style>
+:root{--ink:#202820;--muted:#687267;--paper:#f4f0e6;--card:#fffdf7;--jade:#315d4b;--jade2:#477760;--gold:#b38a4a;--line:#e5dece;--red:#9a5144}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Serif SC","Songti SC","STSong",Georgia,serif;min-height:100vh}
+button{font:inherit}.shell{width:min(920px,100%);margin:auto;padding:28px 22px 60px}.topline{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font:12px/1.5 system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase}.seal{border:1px solid var(--gold);color:var(--gold);padding:6px 10px;border-radius:2px;letter-spacing:.15em}
+.hero{position:relative;overflow:hidden;margin:28px 0 22px;padding:clamp(34px,7vw,72px) clamp(24px,7vw,72px);background:#172a22;color:#f7f1e4;border-radius:5px;min-height:400px;display:flex;flex-direction:column;justify-content:center}
+.hero:before,.hero:after{content:"";position:absolute;border:1px solid rgba(205,177,122,.35);border-radius:50%;width:390px;height:390px;right:-100px;top:-120px}.hero:after{width:280px;height:280px;right:-45px;top:-65px}
+.hero .eyebrow{color:#d4b77f;font:12px system-ui,sans-serif;letter-spacing:.3em}.hero h1{font-size:clamp(34px,6vw,62px);line-height:1.22;letter-spacing:.04em;font-weight:600;max-width:680px;margin:24px 0 18px}.hero h1 span{color:#d5b77c}.hero p{color:#d1d7ce;line-height:1.9;max-width:540px;font-size:15px;margin:0 0 30px}.hero-meta{display:flex;gap:18px;flex-wrap:wrap;color:#c9c5b7;font:12px system-ui,sans-serif;letter-spacing:.08em}.hero-meta span:before{content:"✦";color:#c7a66b;margin-right:7px}
+.primary{border:0;background:#c8a66a;color:#17251f;padding:15px 28px;border-radius:2px;cursor:pointer;font-weight:700;letter-spacing:.12em;transition:.2s}.primary:hover{background:#dfc28e;transform:translateY(-2px)}.intro-note{text-align:center;color:var(--muted);font:12px/1.8 system-ui,sans-serif;margin:18px auto 0}
+.panel{background:var(--card);border:1px solid var(--line);box-shadow:0 12px 40px rgba(47,54,42,.05);padding:clamp(22px,5vw,46px);border-radius:4px}
+.hidden{display:none!important}.progress-head{display:flex;justify-content:space-between;align-items:center;font:12px system-ui,sans-serif;color:var(--muted);margin-bottom:12px}.progress{height:5px;background:#e9e3d7;border-radius:10px;overflow:hidden}.progress span{display:block;height:100%;width:0;background:var(--jade2);transition:width .35s ease}
+.q-kicker{margin:34px 0 12px;color:var(--gold);font:12px system-ui,sans-serif;letter-spacing:.18em}.question{font-size:clamp(22px,4vw,31px);line-height:1.55;margin:0 0 28px;font-weight:600}.options{display:grid;gap:12px}.option{width:100%;display:flex;align-items:center;gap:16px;text-align:left;padding:17px 18px;background:#fff;border:1px solid var(--line);color:var(--ink);border-radius:3px;cursor:pointer;transition:.2s;line-height:1.65}.option:hover{border-color:#8da18f;background:#f7f8f1;transform:translateX(3px)}.option.selected{border-color:var(--jade);background:#edf2eb;box-shadow:inset 3px 0 var(--jade)}.option .letter{width:28px;height:28px;flex:0 0 28px;border:1px solid #cfc6b5;border-radius:50%;display:grid;place-items:center;color:var(--jade);font:12px system-ui,sans-serif}.option.selected .letter{background:var(--jade);color:white;border-color:var(--jade)}
+.nav{display:flex;justify-content:space-between;gap:12px;margin-top:30px}.subtle{border:1px solid var(--line);background:transparent;color:var(--muted);padding:12px 18px;cursor:pointer}.subtle:disabled{opacity:.35;cursor:not-allowed}.hint{font:12px system-ui,sans-serif;color:var(--muted);text-align:center;margin-top:20px}
+.result{padding:0;overflow:hidden}.result-top{background:#172a22;color:#f7f1e4;padding:clamp(30px,6vw,58px);position:relative}.result-top:after{content:"";position:absolute;width:260px;height:260px;border:1px solid rgba(205,177,122,.35);border-radius:50%;right:-85px;top:-100px}.result-label{color:#d5b77c;font:12px system-ui,sans-serif;letter-spacing:.24em}.result-name{font-size:clamp(36px,7vw,64px);margin:16px 0 8px;line-height:1.2}.result-era{color:#c8c9bc;font:13px system-ui,sans-serif;letter-spacing:.12em}.quote{font-size:19px;line-height:1.7;color:#e5d1a8;margin:26px 0 0;max-width:640px}.result-body{padding:clamp(24px,5vw,48px)}.result-intro{font-size:16px;line-height:2;color:#495448;margin:0 0 26px}.traits{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 30px}.trait{border:1px solid #d8d0bd;padding:7px 12px;color:var(--jade);font:12px system-ui,sans-serif}.detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.detail{padding:20px;background:#f7f4ec;border:1px solid #ebe4d6}.detail h3{font-size:15px;margin:0 0 10px;color:var(--jade)}.detail p{font-size:14px;line-height:1.85;color:#5d655b;margin:0}.funfact{margin-top:14px;padding:20px;border-left:3px solid var(--gold);background:#faf7ef}.funfact b{display:block;margin-bottom:8px;color:#886a38;font-size:14px}.funfact p{margin:0;font-size:14px;line-height:1.8;color:#5d655b}.shareline{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:28px}.shareline small{color:var(--muted);font:12px/1.6 system-ui,sans-serif}.actions{display:flex;gap:10px;flex-wrap:wrap}.actions button{padding:12px 17px}.foot{text-align:center;color:#8b8c80;font:11px/1.8 system-ui,sans-serif;margin:24px 0 0}.fade{animation:fade .35s ease}@keyframes fade{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:600px){.shell{padding:16px 14px 36px}.hero{min-height:430px;margin-top:18px}.hero-meta{gap:10px}.detail-grid{grid-template-columns:1fr}.option{padding:15px 13px}.nav .primary,.nav .subtle{padding:12px 15px}.topline{font-size:10px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<main class="shell">
+  <div class="topline"><span>THE EASTERN SOUL ATLAS · 东方人格图鉴</span><span class="seal">趣味测验</span></div>
+  <section id="home" class="hero">
+    <div class="eyebrow">A JOURNEY THROUGH YOUR INNER WORLD</div>
+    <h1>测测你的灵魂<br><span>对应哪位</span><br>中国历史人物</h1>
+    <p>如果把人生写成一部风云史，你会是哪一种角色？是运筹帷幄的谋士、自在洒脱的文人，还是心有山海的侠者？从日常选择出发，寻找你的精神映照。</p>
+    <div class="hero-meta"><span>40 道生活化选择</span><span>约 5–8 分钟</span><span>12 种人物画像</span></div>
+    <div style="margin-top:32px"><button class="primary" id="startBtn">开启灵魂探索　→</button></div>
+  </section>
+  <p class="intro-note" id="disclaimer">没有标准答案，也不考历史知识。请凭第一直觉作答；结果仅供娱乐与自我观察。</p>
+
+  <section id="quiz" class="panel hidden">
+    <div class="progress-head"><span id="stepText">第 1 题 / 共 40 题</span><span id="percent">2%</span></div>
+    <div class="progress"><span id="progressBar"></span></div>
+    <div class="q-kicker" id="category">日常习惯 · 01</div>
+    <h2 class="question" id="questionText"></h2>
+    <div class="options" id="options"></div>
+    <div class="nav"><button class="subtle" id="prevBtn">← 上一题</button><button class="primary" id="nextBtn" disabled>下一题 →</button></div>
+    <div class="hint">选最接近真实自己的答案，不必选择“看起来最好”的那个。</div>
+  </section>
+
+  <section id="result" class="panel result hidden" aria-live="polite">
+    <div class="result-top">
+      <div class="result-label">YOUR HISTORICAL SOUL MATCH · 灵魂匹配结果</div>
+      <div class="result-name" id="resultName"></div>
+      <div class="result-era" id="resultEra"></div>
+      <p class="quote" id="resultQuote"></p>
+    </div>
+    <div class="result-body">
+      <p class="result-intro" id="resultIntro"></p>
+      <div class="traits" id="traits"></div>
+      <div class="detail-grid">
+        <div class="detail"><h3>✦ 性格画像</h3><p id="personality"></p></div>
+        <div class="detail"><h3>✦ 为什么是你</h3><p id="reason"></p></div>
+        <div class="detail"><h3>✦ 你的隐藏优势</h3><p id="strength"></p></div>
+        <div class="detail"><h3>✦ 温柔提醒</h3><p id="caution"></p></div>
+      </div>
+      <div class="funfact"><b>🎐 趣味彩蛋</b><p id="easter"></p></div>
+      <div class="shareline">
+        <small>东方人格图鉴 · 仅供趣味参考<br>把这份灵魂画像分享给朋友，看看谁与你同频。</small>
+        <div class="actions"><button class="subtle" id="restartBtn">↻ 重新测试</button><button class="primary" id="shareBtn">分享 / 复制结果</button></div>
+      </div>
+    </div>
+  </section>
+  <div class="foot">本测验为原创娱乐内容，与专业心理测评无关。历史人物画像为现代趣味化诠释。</div>
+</main>
+<script>
+"use strict";
+const questions = [
+["日常习惯","临出门前，你发现还有十分钟空档，通常会？",["检查一遍安排，确认没有遗漏","随手翻几页书或看看新鲜事","找人聊两句，顺便确认大家的情况","什么也不做，享受片刻清静"]],
+["日常习惯","面对一项没有明确说明的新任务，你会？",["先拆解目标，列出步骤","边做边摸索，灵感来了再调整","先问清相关的人各自需要什么","观察一阵，找到最自然的切入点"]],
+["日常习惯","你的桌面或房间更接近哪种状态？",["物品有固定位置，方便快速取用","书、笔记和灵感碎片随手可见","常有朋友留下的小物件和纪念品","简单清爽，只留下真正需要的东西"]],
+["日常习惯","旅行时遇到计划外的空白半天，你会？",["迅速找一个值得去的地方","走进书店、展览或有故事的街巷","问当地人推荐，跟着人情走","避开人潮，沿着小路慢慢走"]],
+["日常习惯","手机里最常打开的内容是？",["日程、清单或效率工具","文章、纪录片或知识内容","聊天、社群和朋友动态","音乐、风景或让人放松的内容"]],
+["日常习惯","做一件重要的事，你更喜欢？",["先定目标和时间节点","保留空间，等状态与灵感","找伙伴一起推进","不被打扰，按自己的节奏完成"]],
+["处事方式","团队讨论陷入僵局，你通常会？",["提出一个可执行的折中方案","换个角度重新定义问题","让每个人说出真正顾虑，再协调","暂时退出争论，等情绪沉淀"]],
+["处事方式","朋友向你求助，但你也有自己的安排，你会？",["评估轻重缓急，安排可行的帮助","先听对方说完，再看当下感觉","尽量陪伴，能帮多少算多少","坦诚说明边界，并给出其他建议"]],
+["处事方式","遇到规则不合理的情况，你更可能？",["找到规则内的调整办法","追问规则背后的原因","联合相关的人一起沟通","减少消耗，寻找更适合自己的路径"]],
+["处事方式","一个项目突然出现变化，你的第一反应是？",["重新评估风险和资源","把变化当作新的可能性","确认伙伴状态，再一起应对","先稳住自己，观察局势再行动"]],
+["处事方式","你更欣赏哪种解决问题的方式？",["精准布局，提前化解风险","创造新思路，让问题变简单","彼此信任，凝聚团队力量","顺势而为，不做无谓拉扯"]],
+["处事方式","当别人误解你的决定时，你会？",["拿出事实和结果解释","用一个生动例子让对方理解","主动沟通，照顾彼此感受","不急着辩白，让时间说明"]],
+["社交模式","参加一场不太熟悉的聚会，你通常？",["先观察局面，找到合适的话题","和一两个有趣的人聊深一点","主动介绍彼此，让场子热起来","找个舒服的位置，享受自在"]],
+["社交模式","朋友们通常因为什么事想到你？",["拿主意、理清复杂情况","分享灵感、审美或有趣发现","组织活动、照顾大家的感受","倾听、陪伴，或一起安静待着"]],
+["社交模式","你最舒服的相处关系是？",["彼此可靠，关键时刻能托付","思想有来有往，总有新启发","热络坦诚，愿意互相撑腰","尊重空间，不必时时联系"]],
+["社交模式","在多人合作中，你自然承担的角色是？",["规划方向与分配任务","提出创意与不同视角","串联成员、鼓舞士气","独立负责一块并稳稳交付"]],
+["社交模式","面对一个很有魅力但观点不同的人，你会？",["讨论逻辑，看看谁的方案更好","享受观点碰撞，拓宽认知","先找到共同点，再交换看法","尊重差异，不强求说服"]],
+["社交模式","你更愿意把周末留给？",["一场有目标的聚会或活动","讲座、展览或兴趣探索","和亲近的人吃饭聊天","独处、散步或亲近自然"]],
+["情绪反应","计划被临时打乱时，你通常？",["快速重排优先级","先烦一小会儿，再找新乐趣","确认大家都没受影响","接受变化，给自己一点缓冲"]],
+["情绪反应","受到批评时，你最先在意的是？",["批评是否准确、能否改进","对方是否理解我的出发点","关系是否因此变得紧张","这件事是否值得继续投入"]],
+["情绪反应","压力累积时，你更常用什么方式恢复？",["整理问题，逐项解决","写点东西、听音乐或创作","找信任的人聊聊","远离喧闹，独处充电"]],
+["情绪反应","面对一件暂时无法改变的事，你会？",["寻找仍可掌控的部分","换个视角，赋予它新意义","与相关的人互相支持","学会放下，把精力留给当下"]],
+["情绪反应","当你特别开心时，最自然的表达是？",["立刻分享成果和下一步计划","记录下来，留住那一刻","拉上朋友一起庆祝","安静享受，不一定说出口"]],
+["情绪反应","遇到委屈，你通常需要什么？",["一个清楚的解决方案","时间整理感受与想法","有人认真听我说","独处，让情绪自然过去"]],
+["兴趣偏好","哪种活动最容易让你忘记时间？",["研究策略、规划或复杂系统","阅读、写作、艺术与新知","户外活动、团队挑战或助人","园艺、散步、手作或观察自然"]],
+["兴趣偏好","如果学一项新技能，你更想选择？",["谈判、管理或项目统筹","乐器、绘画或写作","运动、急救或团队协作","茶艺、木作或自然观察"]],
+["兴趣偏好","你最容易被哪类故事打动？",["以智慧扭转局势的故事","追寻自我、表达真心的故事","守护伙伴、挺身而出的故事","远离纷扰、坚守本心的故事"]],
+["兴趣偏好","你会收藏哪类东西？",["地图、模型或有系统的资料","书、唱片或有美感的小物","旅行纪念、徽章或朋友礼物","石头、植物或朴素的日常器物"]],
+["兴趣偏好","如果拥有一个完全属于自己的空间，你会？",["布置成高效工作室","做成阅读与创作角落","设计成朋友聚会的据点","留白，放植物和一张舒服的椅子"]],
+["兴趣偏好","哪种成就感最让你满足？",["把复杂事情安排得井井有条","做出独特而有表达力的作品","和伙伴一起完成有意义的事","活得从容，内心清楚而自由"]],
+["价值取向","做选择时，你最不愿牺牲的是？",["长远目标与原则","真实表达与好奇心","承诺、情义与信任","内心自由与生活节奏"]],
+["价值取向","如果大家都期待你走一条稳妥的路，你会？",["衡量利弊，制定自己的策略","听取建议，但保留探索空间","和重要的人谈清楚，再作决定","选择真正适合自己的生活"]],
+["价值取向","你希望别人多年后如何记得你？",["有担当、能成事","有才情、有想法","讲义气、值得信赖","活得通透、不失本心"]],
+["价值取向","面对一个很大的机会，你会先看？",["资源、风险和成功路径","它能带来怎样的新体验","能否与重要的人同行","是否符合内心真正的愿望"]],
+["价值取向","你认同哪句话？",["谋定而后动","心有丘壑，自成风景","路见不平，也愿伸手","行到水穷处，坐看云起时"]],
+["价值取向","当目标与人情发生冲突，你更倾向？",["尽量兼顾，但把原则说清","寻找第三种创造性解法","优先照顾承诺与关系","不勉强自己，也不勉强别人"]],
+["价值取向","你更想拥有哪一种影响力？",["让事情因我的判断而变好","让更多人看见新的可能","让身边的人更有力量","让人们记得生活还有诗意"]],
+["价值取向","如果人生是一段长旅，你最在意？",["抵达目标，留下成果","沿途不断发现与创造","与重要的人并肩走过","保持自由，欣赏沿途风景"]],
+["价值取向","面对未知的未来，你更相信？",["准备与判断能提高胜算","好奇心会带我找到新路","同行者让路途更有力量","顺势而行，也能走出天地"]],
+["价值取向","完成这次测试后，你最希望得到？",["一份清晰、有条理的自我画像","一个有趣的新角度认识自己","一句能和朋友分享的共鸣","一个提醒自己慢下来想想的契机"]]
+];
+// 四个基础倾向：谋略、表达、担当、自在；每题四个选项分别映射四维，题目顺序做轮换，避免固定选项位置。
+const profiles = [
+{id:"strategist",name:"诸葛亮",era:"三国 · 运筹帷幄的谋士",quote:"你不一定站在聚光灯下，但常常看得比别人更远。",intro:"你的灵魂像一盘深思熟虑的棋。你习惯先看全局，再决定落子；不急于证明自己，却在关键时刻拿得出办法。",traits:["全局思维","沉着理性","善于规划","责任感强"],personality:"你擅长把复杂信息整理成清晰路径。面对不确定性，你更愿意先理解局势，再采取行动。你重视承诺，也希望努力真正产生价值。",reason:"你的回答多次呈现出先分析、再规划、重视长期结果的倾向。你不只关注眼前输赢，也会考虑团队与后续影响。",strength:"把混乱变成秩序的能力。你能发现关键变量，也擅长在资源有限时安排优先级。",caution:"别把所有责任都揽在自己身上；有时及时行动，比等待完美方案更重要。",easter:"你的隐藏技能像一张随身携带的战略地图：别人还在讨论发生了什么，你已经开始想下一步。"},
+{id:"emperor",name:"李世民",era:"唐 · 有格局的开创者",quote:"真正的领导力，不是事事亲为，而是让众人各展其长。",intro:"你有目标感，也懂得借助不同人的长处。你既希望事情向前推进，也愿意听取意见、调整方法。",traits:["决断力","识人用人","格局开阔","行动导向"],personality:"你重视结果，但不迷信单打独斗。你愿意承担责任，也能在变化中调整方向，让不同力量形成合力。",reason:"你的选择显示出明显的目标意识、协调能力和行动倾向。你倾向于把愿景转化成具体行动。",strength:"凝聚资源、鼓舞伙伴并推动事情落地。你能让一个想法变成大家愿意参与的计划。",caution:"保持开放的同时，也要留意别让速度盖过细节；真正稳健的推进需要耐心。",easter:"如果朋友组队闯关，你大概率会先问：我们各自最擅长什么？"},
+{id:"cao",name:"曹操",era:"东汉末年 · 务实的破局者",quote:"局势越复杂，越要看清什么真正重要。",intro:"你不太受固定套路限制，重视效率，也敢于在变化中重新组合资源。比起空谈，你更愿意试出一条可行的路。",traits:["务实果断","适应变化","识别机会","执行力"],personality:"你对现实有敏锐感知，愿意面对问题本身。你既能快速判断，也不排斥调整策略，擅长在复杂环境里寻找突破口。",reason:"你的答案体现了对效率、变化和实际结果的关注。你往往会先找到最关键的矛盾，再集中力量处理。",strength:"临场应变与破局能力。别人觉得局面卡住时，你常能找到另一条入口。",caution:"效率不是唯一标准；留一点时间倾听不同声音，可能让决策更完整。",easter:"你的脑内常驻一个小型项目办公室：问题一出现，优先级已经排好了。"},
+{id:"zhuge",name:"张良",era:"汉初 · 深谋远虑的谋士",quote:"最好的布局，有时是让事情自然走向正确的位置。",intro:"你擅长观察人与局势之间的微妙关系。你未必追求站到台前，却很懂得在合适的时机给出关键建议。",traits:["洞察人心","耐心布局","判断时机","低调聪慧"],personality:"你愿意多看一步、多想一层。你对时机与关系较敏感，知道什么时候推进、什么时候等待，也珍惜精神上的清明。",reason:"你的回答里既有分析倾向，也有观察、倾听和把握节奏的特点。你重视策略，但不执着于表面声势。",strength:"看见别人忽略的细节，并把零散线索连成判断。",caution:"想得周全固然可贵，但也要允许自己偶尔不做万全准备就出发。",easter:"你可能是群聊里最晚发言的人，但一开口就把重点说中了。"},
+{id:"sima",name:"司马迁",era:"西汉 · 坚韧的记录者",quote:"把经历写成自己的答案，时间会看见它的重量。",intro:"你对世界有持续的好奇，也愿意深入理解复杂的人与事。你重视真实，不轻易让一时评价定义自己。",traits:["求知欲强","韧性十足","观察细腻","重视真实"],personality:"你愿意追问事情的来龙去脉，也能在不容易的阶段坚持自己的方向。你有表达欲，更希望表达有内容、有分量。",reason:"你的选择表现出对知识、细节、真实感受和长期价值的重视。你不满足于表面结论。",strength:"把经验沉淀成洞见。你能从经历中提炼意义，也有耐心完成长线目标。",caution:"不必把每段经历都独自消化；适度求助也是一种坚韧。",easter:"你的收藏夹可能不只是链接，而是一座还没写完的私人资料馆。"},
+{id:"sushi",name:"苏轼",era:"北宋 · 洒脱的生活家",quote:"生活偶有风雨，你仍能把寻常日子过出滋味。",intro:"你有弹性，也有把日子过得有趣的本领。你能认真投入，也懂得在变化里寻找新的乐趣，不让生活只剩下任务。",traits:["豁达乐观","好奇多才","富有情趣","情绪复原力"],personality:"你对新鲜事物保持兴趣，善于从平凡处发现美感。你不一定回避困难，但愿意调整心境，继续向前。",reason:"你的选择显示出表达、探索、幽默感和弹性的一面。你重视体验，也愿意让人生保留一点轻盈。",strength:"情绪复原与跨领域联想。你能把不同经历变成灵感，也能给周围人带来松弛感。",caution:"乐观不代表凡事都要自己消化；难过时也可以认真休息。",easter:"你很可能把一次普通散步，变成一场关于人生、晚霞和晚餐的三合一体验。"},
+{id:"libai",name:"李白",era:"盛唐 · 自由的诗人",quote:"心里有远方的人，连日常也能走出自己的节奏。",intro:"你重视想象力与自由，不喜欢被单一标准框住。你容易被美、灵感和新体验点亮，愿意为热爱保留空间。",traits:["想象丰富","热爱自由","表达鲜明","敢于探索"],personality:"你有鲜明的个人感受，喜欢用自己的方式理解世界。比起循规蹈矩，你更在意过程是否有生命力、是否真正打动自己。",reason:"你的答案偏向探索、创意、表达和自主选择。你愿意跟随好奇心，也不太愿意为了迎合而失去特色。",strength:"想象力与感染力。你能提出不一样的视角，让平常的事出现新的光彩。",caution:"灵感值得珍惜，给它配上一点持续行动，就能走得更远。",easter:"你的灵感可能在洗澡、散步或等外卖时突然上线，最好随手记下来。"},
+{id:"taibai",name:"王维",era:"盛唐 · 静观万物的诗人",quote:"你听得见热闹之外的声音，也看得见细节里的风景。",intro:"你有细腻的观察力，喜欢留白，也懂得从安静中恢复能量。你不需要时时表达，内在世界本身就很丰盛。",traits:["细腻敏锐","审美感知","内心安定","善于观察"],personality:"你对氛围与细节有感受力，重视生活质地。你愿意独处，但并非冷漠；你只是更珍惜真诚而不勉强的连接。",reason:"你的选择常指向安静、观察、审美和内在秩序。你倾向于先感受，再决定是否表达。",strength:"发现细节之美，并在纷杂环境中保持内心稳定。",caution:"别总把想法留在心里；适时分享，会让别人更懂你。",easter:"你可能会因为一束光落在桌面上，而心情好上好一阵子。"},
+{id:"guanyu",name:"关羽",era:"三国 · 重诺的侠者",quote:"你认定的情义，不会因为一时风向而改变。",intro:"你看重信任与承诺，愿意为在乎的人挺身而出。你不一定擅长说漂亮话，但会用行动表达立场。",traits:["重情重义","原则清晰","可靠坚定","行动勇气"],personality:"你对关系有自己的标准，珍惜坦诚，也不喜欢含糊其辞。遇到重要的事，你愿意承担，不轻易退缩。",reason:"你的回答显示出对承诺、伙伴和原则的重视。你更愿意用持续行动建立信任。",strength:"可靠与守信。别人知道你说到做到，因此愿意把重要的事交给你。",caution:"忠于原则的同时，也给彼此留一点解释和修正的余地。",easter:"你是那种会记得朋友随口提过的小事，并在很久以后默默做到的人。"},
+{id:"yuefei",name:"岳飞",era:"南宋 · 坚毅的将领",quote:"心中有方向，脚下有力量；难走的路也一步一步走。",intro:"你有韧劲，遇到困难不容易轻易放弃。你重视责任与团队，也愿意为了认定的目标持续投入。",traits:["坚毅自律","责任感强","执行稳定","守护意识"],personality:"你倾向于把承诺当回事，也相信长期努力的价值。面对压力，你更愿意稳住阵脚、一步一步推进。",reason:"你的选择体现出坚持、担当和实际行动的倾向。你在意的不只是开始时的热情，还有能否坚持到底。",strength:"稳定的执行力与抗压韧性。你能在漫长过程中保持方向感。",caution:"别把坚强变成不许自己疲惫；懂得休整，才能走得更久。",easter:"你的待办清单可能很长，但完成一项就会获得真实的满足感。"},
+{id:"tao",name:"陶渊明",era:"东晋 · 守心的隐士",quote:"不必追逐所有声音，知道自己想过怎样的生活就好。",intro:"你珍惜自主与内心秩序，懂得区分真正重要的事和外界的喧嚣。你追求的不是逃避，而是更诚实地生活。",traits:["独立清醒","淡泊自在","自我节奏","亲近自然"],personality:"你不太依赖外界评价来确认价值，重视简单、真实、有余裕的生活。你能独处，也能从日常小事里获得满足。",reason:"你的选择多次表现出对自由、边界、自然和内心感受的重视。你更愿意选择适合自己的节奏。",strength:"辨别真正需求的能力。你知道什么值得投入，也懂得及时从无意义的消耗中抽身。",caution:"保持独立之余，也可以让值得信任的人走近一点。",easter:"你理想中的高光时刻，可能是一顿好饭、一阵晚风，以及没人催你的下午。"},
+{id:"xun",name:"荀子",era:"战国 · 深思的思想者",quote:"把好奇变成学习，把想法变成可以实践的本领。",intro:"你相信理解与练习能够改变事情。你喜欢把经验整理成方法，也愿意持续修正自己的看法。",traits:["理性求证","持续学习","结构思维","重视实践"],personality:"你不容易满足于听起来漂亮的说法，更想知道它如何运作、能否验证。你尊重知识，也相信习惯与训练的力量。",reason:"你的回答呈现出分析、求知、复盘和长期成长的倾向。你愿意把抽象想法落实到日常行动。",strength:"建立方法、持续学习并迭代改进。你能把一次经验转化为下一次更好的做法。",caution:"并非所有事情都需要先弄懂再开始；有时体验本身就是学习。",easter:"你可能会在看完一部剧后，顺手查资料、做笔记，最后开出一个新知识分支。"},
+{id:"guo",name:"郭子仪",era:"唐 · 沉稳的统帅",quote:"真正的强大，是能扛事，也能让身边的人安心。",intro:"你有稳定的担当感，擅长照顾整体局面。你不一定追求锋芒，但重视可靠、协调和长久的信任。",traits:["沉稳可靠","协调能力","宽厚有度","大局意识"],personality:"你擅长在不同需求之间寻找平衡。面对突发状况，你更关注如何稳住局面、让事情继续前进。",reason:"你的选择多次体现出团队意识、情绪稳定与协调倾向。你愿意承担责任，也懂得为关系留余地。",strength:"稳定团队与化解摩擦。你能成为别人愿意依靠的支点。",caution:"照顾全局时，也别忘了自己的需要；可靠的人同样值得被照顾。",easter:"你可能不是聚会里声音最大的人，却常常是大家散场后最想说声谢谢的人。"}
+];
+const dimensionNames=["谋略","表达","担当","自在"];
+const optionMaps=[
+ [0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3]
+];
+// Each answer option maps to a dimension; rotate option order by question for less predictable patterns.
+const answerMaps = questions.map((_,i)=>[0,1,2,3].map((v)=> (v + (i%4))%4));
+let answers=Array(questions.length).fill(null), current=0;
+const $=id=>document.getElementById(id);
+function show(id){["home","quiz","result"].forEach(x=>$(x).classList.toggle("hidden",x!==id));window.scrollTo({top:0,behavior:"smooth"});}
+function renderQuestion(){
+ const q=questions[current], pct=Math.round((current+1)/questions.length*100);
+ $("stepText").textContent=`第 ${current+1} 题 / 共 ${questions.length} 题`;
+ $("percent").textContent=pct+"%"; $("progressBar").style.width=pct+"%";
+ $("category").textContent=`${q[0]} · ${String(current+1).padStart(2,"0")}`;
+ $("questionText").textContent=q[1]; $("options").innerHTML="";
+ q[2].forEach((label,i)=>{
+   const b=document.createElement("button");b.type="button";b.className="option"+(answers[current]===i?" selected":"");
+   const letter=document.createElement("span");letter.className="letter";letter.textContent=String.fromCharCode(65+i);
+   const txt=document.createElement("span");txt.textContent=label;b.append(letter,txt);
+   b.addEventListener("click",()=>{answers[current]=i;renderQuestion();});$("options").append(b);
+ });
+ $("prevBtn").disabled=current===0;
+ $("nextBtn").disabled=answers[current]===null;
+ $("nextBtn").textContent=current===questions.length-1?"查看我的灵魂画像 →":"下一题 →";
+ $("quiz").classList.remove("fade");void $("quiz").offsetWidth;$("quiz").classList.add("fade");
+}
+function calculate(){
+ const scores=[0,0,0,0];
+ answers.forEach((a,i)=>{if(a!==null)scores[answerMaps[i][a]]++;});
+ // Tie-break with weighted category affinity: later value/interest questions add a small preference signal.
+ const weighted=scores.map((s,d)=>s);
+ const max=Math.max(...weighted), leaders=weighted.map((s,i)=>s===max?i:-1).filter(i=>i>=0);
+ let winner=leaders[0];
+ if(leaders.length>1){
+   const tail=answers.slice(30).reduce((acc,a,j)=>{if(a!==null)acc[answerMaps[j+30][a]]++;return acc;},[0,0,0,0]);
+   winner=leaders.sort((a,b)=>tail[b]-tail[a])[0];
+ }
+ // Map dimensions and their blend to archetypes; each result remains reachable.
+ const secondary=weighted.map((v,i)=>({i,v})).filter(x=>x.i!==winner).sort((a,b)=>b.v-a.v)[0].i;
+ const key=`${winner}-${secondary}`;
+ const map={
+  "0-1":3,"0-2":1,"0-3":2,"0-0":3,
+  "1-0":4,"1-2":5,"1-3":6,"1-1":7,
+  "2-0":8,"2-1":9,"2-3":10,"2-2":11,
+  "3-0":10,"3-1":7,"3-2":11,"3-3":10
+ };
+ // Deterministic coverage across the twelve profiles: primary dimension plus runner-up, with total score fingerprint.
+ let idx=map[key]??0;
+ if(winner===0 && secondary===0) idx=3;
+ if(winner===1 && secondary===1) idx=7;
+ if(winner===2 && secondary===2) idx=11;
+ if(winner===3 && secondary===3) idx=10;
+ // A subtle 4-way sub-type variation keeps the result pool broad and repeatable.
+ if(winner===0 && secondary===1 && scores[0]-scores[1]>=5)idx=0;
+ if(winner===0 && secondary===2 && scores[0]-scores[2]>=5)idx=1;
+ if(winner===1 && secondary===0 && scores[1]-scores[0]>=5)idx=4;
+ if(winner===1 && secondary===2 && scores[1]-scores[2]>=5)idx=5;
+ if(winner===2 && secondary===0 && scores[2]-scores[0]>=5)idx=8;
+ if(winner===2 && secondary===1 && scores[2]-scores[1]>=5)idx=9;
+ return {profile:profiles[idx],scores};
+}
+function finish(){
+ const {profile:p,scores}=calculate();
+ $("resultName").textContent=p.name;$("resultEra").textContent=p.era;$("resultQuote").textContent="「"+p.quote+"」";
+ $("resultIntro").textContent=p.intro;$("personality").textContent=p.personality;$("reason").textContent=p.reason;$("strength").textContent=p.strength;$("caution").textContent=p.caution;$("easter").textContent=p.easter;
+ $("traits").innerHTML="";p.traits.forEach(t=>{const s=document.createElement("span");s.className="trait";s.textContent=t;$("traits").append(s);});
+ $("result").dataset.result=`${p.name}｜${p.quote}`;
+ show("result");$("result").classList.add("fade");
+}
+$("startBtn").addEventListener("click",()=>{answers.fill(null);current=0;show("quiz");renderQuestion();});
+$("prevBtn").addEventListener("click",()=>{if(current>0){current--;renderQuestion();}});
+$("nextBtn").addEventListener("click",()=>{if(answers[current]===null)return;if(current<questions.length-1){current++;renderQuestion();}else finish();});
+$("restartBtn").addEventListener("click",()=>{answers.fill(null);current=0;show("home");});
+$("shareBtn").addEventListener("click",async()=>{
+ const p=$("result").dataset.result;
+ const content=`《测测你的灵魂对应哪位中国历史人物》\\n我的灵魂匹配：${p}\\n快来测测你的历史人物灵魂画像！`;
+ try{if(navigator.share){await navigator.share({title:"我的历史人物灵魂画像",text:content});}
+ else if(navigator.clipboard && window.isSecureContext){await navigator.clipboard.writeText(content);$("shareBtn").textContent="已复制，去分享吧 ✓";}
+ else{window.prompt("复制以下结果分享给朋友：",content);}}
+ catch(e){if(e.name!=="AbortError")window.prompt("复制以下结果分享给朋友：",content);}
+});
+</script>
+</body>
+</html>
